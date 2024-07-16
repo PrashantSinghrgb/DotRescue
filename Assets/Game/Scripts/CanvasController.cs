@@ -6,13 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class CanvasController : MonoBehaviour
 {
-    [SerializeField]
+    
     private GameObject _gameCanvas;
-    [SerializeField]
     private GameObject _mainCanvas;
-    [SerializeField]
     private GameObject _settingsCanvas;
-    [SerializeField]
     private GameObject _activeCanvas;
 
 
@@ -24,15 +21,19 @@ public class CanvasController : MonoBehaviour
         SwitchCanvas(_mainCanvas.name);
     }
 
+    // Subscribe to the sceneLoaded event
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
+    
+    // Unsubscribe from the sceneLoaded event
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    // Called when a new scene is loaded
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         InitializeCanvases();
@@ -44,6 +45,7 @@ public class CanvasController : MonoBehaviour
         _mainCanvas = FindInactiveObjectByName("Main_Canvas");
         _settingsCanvas = FindInactiveObjectByName("Settings_Canvas");
 
+        // Activate the main canvas if no active canvas is set
         if (_activeCanvas != null)
         {
             _activeCanvas.SetActive(true);
@@ -54,6 +56,8 @@ public class CanvasController : MonoBehaviour
             _activeCanvas.SetActive(true);
         }
     }
+
+    // Switch the active canvas based on the given name
     public void SwitchCanvas(string name)
     {
         GameObject targetCanvas = null;
@@ -71,6 +75,7 @@ public class CanvasController : MonoBehaviour
             targetCanvas = _gameCanvas;
         }
 
+        // Switch the active canvas if a valid target canvas is found
         if (targetCanvas != null && targetCanvas != _activeCanvas)
         {
             _activeCanvas.SetActive(false);
@@ -78,6 +83,8 @@ public class CanvasController : MonoBehaviour
             _activeCanvas = targetCanvas;
         }
     }
+
+    // Find an inactive object by name
     private GameObject FindInactiveObjectByName(string name)
     {
         GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();

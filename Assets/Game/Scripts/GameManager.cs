@@ -5,25 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    // Singletone instance of the gamemanager
     public static GameManager Instance;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            Init();
-            DontDestroyOnLoad(gameObject);
-
-            return;
-
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        
-    }
+    
+    // high score key for playerprefs
     private string _highScoreKey = "HighScore";
 
     public int HighScore
@@ -38,18 +23,43 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     public int CurrentScore { get; set; }
     public bool IsInitialized { get; set; }
-  
 
+    public const string _mainMenu = "MainMenu";
+    private const string _gamePlay = "GamePlay";
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            // set the instance of this object
+            Instance = this;
+            
+            // initialize the game manaer
+            Init();
+            
+            // Prevent this object from being destroyed when loading a new scen
+            DontDestroyOnLoad(gameObject);
+
+            return;
+
+        }
+        else
+        {
+            // Destroy duplicate instances of the game manager
+            Destroy(gameObject);
+        }
+        
+    }
+    
     private void Init()
     {
         CurrentScore = 0;
         IsInitialized = false;
     }
-    public const string _mainMenu = "MainMenu";
-    private const string _gamePlay = "GamePlay";
-
+    
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(_mainMenu);
