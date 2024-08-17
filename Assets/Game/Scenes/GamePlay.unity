@@ -5625,7 +5625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9ebd08da8c8234ba2f88757af50ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotateSpeed: 120
+  _rotateSpeed: 130
   _moveClip: {fileID: 8300000, guid: a7e5032d11bb63f42b31b0907d4980ee, type: 3}
   _loseClip: {fileID: 8300000, guid: 3036e410c1c03214290adfd362325ee0, type: 3}
   _gamePlayManager: {fileID: 964917230}
@@ -5870,8 +5870,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreText: {fileID: 1217828606}
-  _levelSpeed: 050000000a000000140000002800000064000000
-  _levelMax: 190000004b000000af000000770100006b030000
+  _levelSpeed: 0a000000140000003200000064000000c8000000
+  _levelMax: 320000009600000090010000e8030000d0070000
 --- !u!1 &972349100
 GameObject:
   m_ObjectHideFlags: 0
@@ -6906,10 +6906,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4456082bb3ff49e4da1936c4c7ec8ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minRotateSpeed: 145
-  _maxRotateSpeed: 60
+  _minRotateSpeed: 60
+  _maxRotateSpeed: 105
   _minRotateTime: 0.5
-  _maxRotateTime: 2.5
+  _maxRotateTime: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

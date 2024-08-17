@@ -17,7 +17,7 @@ public class Obstacle : MonoBehaviour
         _currentRotateTime = 0f;
         _currentRotateSpeed = _minRotateSpeed + (_maxRotateSpeed - _minRotateSpeed) * 0.1f * Random.Range(0, 11);
         _rotateTime = _minRotateTime + (_maxRotateTime - _minRotateTime) * 0.1f * Random.Range(0, 11);
-        _rotateTime *= Random.Range(0, 2) == 0 ? 1f : -1f;
+        _currentRotateSpeed *= Random.Range(0, 2) == 0 ? 1f : -1f;
     }
 
     private void Update()
@@ -34,7 +34,7 @@ public class Obstacle : MonoBehaviour
             // Randomize new rotation speed and time
             _currentRotateSpeed = _minRotateSpeed + (_maxRotateSpeed - _minRotateSpeed) * 0.1f * Random.Range(0, 11);
             _rotateTime = _minRotateTime + (_maxRotateTime - _minRotateTime) * 0.1f * Random.Range(0, 11);
-            _rotateTime *= Random.Range(0, 2) == 0 ? 1f : -1f;
+            _currentRotateSpeed *= Random.Range(0, 2) == 0 ? 1f : -1f;
         }
     }
 

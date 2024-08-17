@@ -14,10 +14,13 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            // Play movement sound
-            SoundManager.Instance.PlaySound(_moveClip);
             // Reverse rotation direction
             _rotateSpeed *= -1f;
+
+            // Play movement sound
+            SoundManager.Instance.PlaySound(_moveClip);
+
+            
         }
     }
 
@@ -37,6 +40,7 @@ public class Player : MonoBehaviour
 
             // Play losing sound
             SoundManager.Instance.PlaySound(_loseClip);
+            SoundManager.Instance.TriggerHapticFeedback();
 
             // Inform GamePlayManager that the game has ended
             _gamePlayManager.GameEnded();

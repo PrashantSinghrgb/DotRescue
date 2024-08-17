@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public int CurrentScore { get; set; }
+    public bool IsInitialized { get; set; }
+
+    public const string _mainMenu = "MainMenu";
+    private const string _gamePlay = "GamePlay";
+
     // Singletone instance of the gamemanager
     public static GameManager Instance;
     
@@ -22,13 +28,6 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt(_highScoreKey, value);
         }
     }
-
-
-    public int CurrentScore { get; set; }
-    public bool IsInitialized { get; set; }
-
-    public const string _mainMenu = "MainMenu";
-    private const string _gamePlay = "GamePlay";
 
     private void Awake()
     {

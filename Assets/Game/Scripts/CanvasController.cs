@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class CanvasController : MonoBehaviour
@@ -44,6 +45,7 @@ public class CanvasController : MonoBehaviour
         _gameCanvas = FindInactiveObjectByName("Game_Canvas");
         _mainCanvas = FindInactiveObjectByName("Main_Canvas");
         _settingsCanvas = FindInactiveObjectByName("Settings_Canvas");
+       // SoundManager.Instance._slider = FindSlider("Audio_Slider");
 
         // Activate the main canvas if no active canvas is set
         if (_activeCanvas != null)
@@ -69,6 +71,8 @@ public class CanvasController : MonoBehaviour
         else if (name == _settingsCanvas.name)
         {
             targetCanvas = _settingsCanvas;
+            SoundManager.Instance._slider = FindSlider("Audio_Slider");
+            SoundManager.Instance._toggle = FindToggle("Toggle");
         }
         else if (name == _gameCanvas.name)
         {
@@ -85,7 +89,7 @@ public class CanvasController : MonoBehaviour
     }
 
     // Find an inactive object by name
-    private GameObject FindInactiveObjectByName(string name)
+    public GameObject FindInactiveObjectByName(string name)
     {
         GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
 
@@ -94,6 +98,33 @@ public class CanvasController : MonoBehaviour
             if (obj.name == name)
             {
                 return obj;
+            }
+        }
+        return null;
+    }
+
+    public Slider FindSlider(string name)
+    {
+        Slider[] allSliders = Resources.FindObjectsOfTypeAll<Slider>();
+
+        foreach (Slider slider in allSliders)
+        {
+            if (slider.name== name)
+            {
+                return slider;
+            }
+        }
+        return null;
+    }
+    public Toggle FindToggle(string name)
+    {
+        Toggle[] allToggles = Resources.FindObjectsOfTypeAll<Toggle>();
+
+        foreach(Toggle toggle in allToggles)
+        {
+            if (toggle.name == name)
+            {
+                return toggle;
             }
         }
         return null;
